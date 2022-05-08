@@ -1,0 +1,16 @@
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\DrinkShopClasses.dll.config
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\DrinkShopClasses.dll
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\DrinkShopClasses.pdb
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\EntityFramework.dll
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\EntityFramework.SqlServer.dll
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\EntityFramework.xml
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\bin\Debug\EntityFramework.SqlServer.xml
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.csproj.CoreCompileInputs.cache
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.csproj.CopyComplete
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.dll
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.pdb
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.csprojAssemblyReference.cache
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.Migrations.InitialCreate.resources
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.csproj.GenerateResource.cache
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.Migrations.ConTable.resources
+F:\MyWork\Working Projects\OnlineDrinkShop\DrinkShopClasses\obj\Debug\DrinkShopClasses.Migrations.UpdateContactus.resources
