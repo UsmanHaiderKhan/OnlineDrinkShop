@@ -1,0 +1,53 @@
+﻿@using OnlineDrinkShop.Models
+
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ShoppingCart cart = (ShoppingCart)Session[WebUtils.Cart];
+}
+
+<h2 style="margin-top: 7%;margin-left: 40%">Your Product Cart</h2>
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr class="deep-purple text-white text-center">
+                <th>Image</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+
+                <th class="col-lg-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (cart != null && cart.NumberOfItems > 0)
+            {
+                foreach (var cItem in cart.Items)
+                {
+                    <tr style="text-align: center">
+
+                        <td><img src="@cItem.ImageUrl" alt="@cItem.Name" class="img-thumbnail" style="height:70px; width: 70px;border-radius:50% " /></td>
+                        <td>@cItem.Name </td>
+                        <td>@cItem.Price</td>
+                        <td><center><input type="text" disabled="disabled" class="form-control text-center cartqtytxt" style="width:75px" value="@cItem.Quantity" data-pid="@cItem.Id" /></center></td>
+                        <td>@cItem.Amount</td>
+
+                        <td>
+                            <a href="@Url.Action("Remove","Cart",new{cItem.Id})" class="text-danger"><span class="fa fa-trash fa-lg"></span></a> |
+                            <a href="@Url.Action("Update","Cart",new{cItem.Id})" class="text-success"><span class="fa fa-edit fa-lg"></span></a>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+
+    <h3>Your Total Amount is:@ViewBag.GrandTotal</h3>
+
+
+
+
+    @Html.ActionLink("Order Now", "Order", "Product", null, new { @class = "btn btn-primary" })
+</div>
