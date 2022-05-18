@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+}
+<style>
+    .box {
+        width: 200px;
+        height: 190px;
+        padding: 50px;
+    }
+</style>
+<h2>Index</h2>
+<div class="row">
+
+
+    <div class="col-lg-3">
+        <div class="card box">
+            <a href="@Url.Action("GetAllUsers", "Admin")">
+                <h2><span class="fa fa-user"></span><span class="ml-3">@Html.Action("GetUserCount", "Admin")</span> </h2>
+                <h3 class="text-center">Users</h3>
+            </a>
+
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card box">
+            <a href="@Url.Action("Orderby", "Order")">
+                <h2><span class="fa fa-shopping-cart"></span><span class="ml-3">@Html.Action("GetOrdersCount", "Order")</span> </h2>
+                <h3 class="text-center">Order</h3>
+            </a>
+
+        </div>
+    </div>
+    <div class="col-lg-3 ">
+        <div class="card box">
+            <a href="@Url.Action("ReciveOrders", "Order")">
+                <h2><span class="fa fa-shopping-bag"></span><span class="ml-3">@Html.Action("GetOrderByCount", "Order")</span> </h2>
+                <h3 class="text-center">OrderBy</h3>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card box">
+            <a href="#">
+                <h2><span class="fa fa-signal"></span><span class="ml-3"></span>2</h2>
+                <h3 class="text-center">Visiters</h3>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
