@@ -1,0 +1,26 @@
+﻿@using DrinkShopClasses.UserMangement
+@{
+    User user = (User)Session[WebUtils.CurrentUser];
+}
+<div class="col-lg-8 offset-lg-2 mt-5">
+    <table class="table table-hover">
+        <thead>
+            <tr class="deep-purple text-white text-center">
+                <th>BuyerName</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone#</th>
+
+            </tr>
+
+        </thead>
+        <tbody></tbody>
+
+        <tr class="text-center">
+            <td>@user.FullName</td>
+            <td>@user.FullAddress</td>
+            <td>@user.Email</td>
+            <td>@user.PhoneNo</td>
+        </tr>
+    </table>
+</div>
