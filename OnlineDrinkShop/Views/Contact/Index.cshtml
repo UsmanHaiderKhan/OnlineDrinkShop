@@ -1,0 +1,81 @@
+﻿@model DrinkShopClasses.UserMangement.ContactUs
+@{
+    ViewBag.title = "Contactus";
+    Layout = null;
+}
+<link href="~/Content/MDB Free/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
+<link href="~/Content/MDB Free/css/mdb.min.css" rel="stylesheet" />
+<link href="~/Content/Images/style.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+@*<div class="form-group">
+        <h3> <a href="mailto:usmanhaiderkhan4@hotmail.com">Email Us</a></h3>
+    </div>*@
+<div class="container">
+    <div class="left-w3">
+        <h2>Contact Us!</h2>
+        @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { enctype = "text/plain" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="agile1">
+                <h3>Name</h3>
+                @Html.TextBoxFor(m => m.CustomerName, null, new { placeholder = "Your Name" })
+            </div>
+            <div class="agile1">
+                <h3>Company</h3>
+                @Html.TextBoxFor(m => m.CompanyName, null, new { placeholder = "Your Company Name" })
+            </div>
+            <div class="agile1">
+                <h3>Telephone</h3>
+                @Html.TextBoxFor(m => m.Phone, null, new { placeholder = "Your Phone No" })
+            </div>
+            <div class="agile1">
+                <h3>Email</h3>
+                @Html.TextBoxFor(m => m.Email, null, new { placeholder = "Your Email" })
+            </div>
+            <div class="agile1">
+                <h3>Message</h3>
+                @Html.TextAreaFor(m => m.Message, new { placeholder = "Write Your Message" })
+            </div>
+            <button class="btn btn-deep-orange" type="submit">Send Meesage &nbsp;<i class="fa fa-paper-plane fa-lg"></i></button>
+        }
+
+
+    </div>
+    <div class="right-w3ls">
+        <h3 class="w3ls">Subscribe</h3>
+        <form action="#" method="post">
+            <div class="agile1">
+                <h3>Email Address</h3>
+                <input type="text" name="email" class="email" placeholder="" required="">
+            </div>
+            <input type="submit" class="subscribe" value="Subscribe">
+        </form>
+        <h3 class="w3ls">Our Location</h3>
+        <div class="agile1">
+            <h3>Reach Us</h3>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.9940307!3d40.719109700000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1441710758555"></iframe>
+            </div>
+        </div>
+        <h3 class="w3ls">Stay In Touch</h3>
+        <div class="agile1">
+            <h3>Social Icons</h3>
+            <div class="socialicons w3">
+                <ul>
+                    <li><a class="facebook" target="_blank" href="https://www.facebook.com/usman.haider.796569"></a></li>
+                    <li><a class="twitter" target="_blank" href="https://twitter.com/Xamarin_DevTeam"></a></li>
+                    <li><a class="google" target="_blank" href="mailto:usmanhaiderkhan4@hotmail.com"></a></li>
+                    <li><a class="pinterest" target="_blank" href="https://www.pinterest.com/usman1269/"></a></li>
+                    <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/in/usmanhaider-khan-00666b149/"></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>
