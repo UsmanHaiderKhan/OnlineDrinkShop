@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DrinkShopClasses.DrinkManagement.Drink>
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductDetails</h2>
+
+<h2 class="text-center" style="margin-top: 5%">Drink Details</h2>
+
+<div class="col-lg-9 offset-1">
+    <table class="table table-borderless table-striped table-hover">
+
+
+
+        @foreach (var v in Model)
+        {
+            <tr class="text-center">
+                <th>Drink Image</th>
+                @foreach (var s in v.ImageUrl)
+                {
+                    <td><img src="@Url.Content(s.Url)" alt="@s.Caption" style="width: 100px; height: 100px;border-radius:10% " /></td>
+                }
+            </tr>
+            <tr class="text-center">
+                <th>Drink Name</th>
+                <td>@v.Name</td>
+            </tr>
+            <tr class="text-center">
+                <th>Drink Price</th>
+                <td>@v.Price</td>
+            </tr>
+            <tr class="text-center">
+                <th>Drink Category</th>
+                <td>@v.Category.Name</td>
+            </tr>
+            <tr class="text-center">
+                <th>Drink short Description</th>
+                <td>@v.ShortDescription</td>
+            </tr>
+            <tr class="text-center">
+                <th>Long Description</th>
+                <td>@v.LongDescription</td>
+            </tr>
+            <tr class="text-center">
+                <th>Drink IsPresent</th>
+                <td>@v.InStock</td>
+            </tr>
+            <tr class="text-center">
+                <th>IsPreferred Drink</th>
+                <td>@v.IsPreferredDrink</td>
+            </tr>
+
+
+        }
+    </table>
+    <br />
+</div>
+
+
