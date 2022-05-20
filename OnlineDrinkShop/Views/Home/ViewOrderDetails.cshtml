@@ -1,0 +1,44 @@
+﻿@using DrinkShopClasses.DrinkManagement
+@model IEnumerable<DrinkShopClasses.DrinkManagement.Order>
+@{
+    ViewBag.Title = "ViewOrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Order> orders = ViewBag.orders;
+
+}
+
+<h2 class="">ViewOrderDetails</h2>
+@Html.Partial("~/views/Home/_Userinfo.cshtml")
+
+<div class="col-lg-8 offset-lg-2 mt-5">
+    <table class="table table-hover">
+        <thead>
+            <tr class="deep-purple text-white text-center">
+                <th>ProductImage</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        @foreach (var v in Model)
+        {
+            <tr class="text-center">
+                @foreach (var c in v.OrderDetails)
+                {
+                    <td><img src="@Url.Content(c.ImageUrl)" class="img-thumbnail" style="width: 70px; height: 70px; border-radius: 50%" /></td>
+                    <td>@c.Name</td>
+                    <td>@c.Qauntity</td>
+                    <td>@c.Price</td>
+                    <td>@c.Amount</td>
+                }
+                <td>@v.OrderStatus.Name</td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>
