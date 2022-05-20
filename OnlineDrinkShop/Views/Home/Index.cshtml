@@ -1,0 +1,18 @@
+﻿@using OnlineDrinkShop.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ProductSummeryModel> products = ViewBag.products;
+
+}
+<div style="margin-top: 7%">
+    @Html.Partial("~/Views/Shared/_Slider.cshtml")
+</div>
+
+
+<div id="prodlist">
+    @Html.Partial("~/Views/Shared/_SummeryModel.cshtml", products)
+</div>
+
+
