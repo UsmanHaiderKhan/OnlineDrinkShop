@@ -1,0 +1,104 @@
+﻿@model IEnumerable<DrinkShopClasses.DrinkManagement.Order>
+
+@{
+    ViewBag.Title = "Orderby";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+    long price = 0;
+    int qty = 0;
+}
+
+<h2>Orderby</h2>
+@Html.Partial("~/Views/Order/_DeleteOrderBy.cshtml")
+<table class="table table-borderless table-striped table-hover">
+    <tr class="deep-purple text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.BuyerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Quantity</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus.Name)
+            </td>
+            @foreach (var v in item.OrderDetails)
+            {
+                price += v.Amount;
+                qty += v.Qauntity;
+
+            }
+            <td class="text-center">@price</td>
+            <td class="text-center">@qty</td>
+            <td>
+                <a href='#exampleModal' data-toggle="modal" id="@item.Id" class="hits text-danger"><span class="fa fa-trash"></span></a> |
+                <a href="@Url.Action("OrderView","Order",new {id=item.Id})" id="@item.Id" class="text-success"><span class="fa fa-eye"></span></a>
+
+            </td>
+        </tr>
+    }
+
+</table>
+<input type="hidden" id="hiddenOrderId" />
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".hits").click(function () {
+                var rid = $(this).attr("id");
+                alert(rid);
+                $("#hiddenOrderId").val(rid);
+                $("#modal-id").model('show');
+            });
+
+            $("#hit").click(function (event) {
+                var delRecord = $("#hiddenOrderId").val();
+                alert(delRecord);
+                $.ajax({
+
+                    url: "/Order/DeleteOrdersBy/" + delRecord,
+                    type: "POST",
+                    data: { id: delRecord },
+                    success: function (result) {
+
+                        $("#modal-id").modal('hide');
+                        $("#row_" + delRecord).remove();
+                    }
+                });
+            });
+        });
+    </script>
+}
