@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DrinkShopClasses.DrinkManagement.Order>
+@{
+    ViewBag.Title = "OrderView";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+}
+
+<h3 class="text-center" style="color:maroon">View Detail of Customer Order</h3>
+<div class="col-lg-8 offset-lg-2">
+    <table class="table  table-responsive table-hover">
+        @foreach (var v in Model)
+        {
+            <tr>
+                <th>Customer Name</th>
+                <td>@v.BuyerName</td>
+            </tr>
+            <tr>
+                <th>Address of Customer</th>
+                <td>@v.FullAddress</td>
+            </tr>
+            <tr>
+                <th>Customer Email</th>
+                <td>@v.EmailAddress</td>
+            </tr>
+            <tr>
+                <th>Customer Phone#</th>
+                <td>@v.Phone</td>
+            </tr>
+            foreach (var c in v.OrderDetails)
+            {
+                <tr>
+                    <th>Product Image</th>
+                    <td><img src="@Url.Content(c.ImageUrl)" style="height:80px; width: 80px;border-radius: 50%" class="img-thumbnail" /></td>
+                </tr>
+                <tr>
+                    <th>Product Name</th>
+                    <td>@c.Name</td>
+                </tr>
+                <tr>
+                    <th>Product Quantity</th>
+                    <td>@c.Qauntity</td>
+                </tr>
+                <tr>
+                    <th>Product Price</th>
+                    <td>@c.Price</td>
+                </tr>
+
+            }
+
+
+        }
+
+    </table>
+</div>
+<br /><br />
+
