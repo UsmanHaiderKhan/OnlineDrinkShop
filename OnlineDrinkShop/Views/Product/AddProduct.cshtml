@@ -1,0 +1,172 @@
+﻿@model DrinkShopClasses.DrinkManagement.Drink
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/Admin/_AdminLayout.cshtml";
+}
+
+<style type="text/css">
+    .mytabpane {
+        padding: 10px;
+        border-left: solid 3px #e4e4e4;
+        border-right: solid 3px #e4e4e4;
+        border-bottom: solid 3px #e4e4e4;
+    }
+
+    .mytab {
+        border-left: solid 1px #e4e4e4;
+        border-right: solid 1px #e4e4e4;
+        border-bottom: solid 1px #e4e4e4;
+        padding: 20px;
+    }
+</style>
+<h2>Create New Product</h2>
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row mt-2">
+        <div class="col-md-12">
+            <div class="card">
+                <h3 class="card-header deep-purple text-xl-center white-text">Add New Drinks Both Alcholic and Non-Alcholic </h3>
+                <div class="card-body">
+                    <h4 class="card-title text-xl-center">Display the Multi View Controls</h4>
+                    <p class="card-text">
+                        <ul class="nav nav-tabs deep-purple">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#productpane" data-toggle="tab">
+                                    <span class="fa fa-beer fa-lg"></span>&nbsp;Product
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#orderpane" data-toggle="tab">
+                                    <span class="fa fa-info-circle fa-lg"></span>&nbsp;Description
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#summerypane" data-toggle="tab">
+                                    <span class="fa fa-image"></span>&nbsp;Images
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="productpane" class="tab-pane mytabpane active">
+                                <div class="md-form">
+                                    @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", id = "name" })
+                                    @Html.LabelFor(m => m.Name, new { @for = "name" })
+                                </div>
+                                <div class="md-form">
+                                    @Html.TextBoxFor(m => m.Price, null, new { @class = "form-control", id = "price", type = "number" })
+                                    @Html.LabelFor(m => m.Price, new { @for = "price" })
+                                </div>
+                                <div class="md-form">
+                                    <div>
+                                        @Html.DropDownList("category", (IEnumerable<SelectListItem>)ViewBag.Category, "- Select Drink Category -", new { @class = "form-control" })
+                                    </div>
+
+                                </div>
+                                <div class="md-form">
+                                    @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control", id = "short" })
+                                    @Html.LabelFor(m => m.ShortDescription, new { @for = "short" })
+                                </div>
+                                <div>
+                                    <label>@Html.CheckBox("InStock", "InStock") InStock</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label>@Html.CheckBox("IsPreferredDrink", "IsPreferredDrink") IsPreferredDrink</label>
+                                </div>
+                            </div>
+                            <div id="orderpane" class="tab-pane mytabpane">
+                                @Html.TextAreaFor(m => m.LongDescription, new { @class = "form-control", rows = "13", @style = "resize:none" })
+                            </div>
+                            <div id="summerypane" class="tab-pane mytabpane">
+                                <div class="col-lg-4 ml-5">
+                                    <div class="" id="fileUpldbtnContainer">
+                                        <div>
+                                            <img id="blah" src="" alt="" class="img-thumbnail" style="height: 153px; width: 174px; z-index: 0; position: absolute; top: 2px;" />
+                                        </div>
+                                        <div class="fileUpload" style="height: 152px; width: 176px; padding: 29px 51px; font-size: 15px; color: rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0.1);">
+                                            <span class="uploadFile"><span class=" fa fa-plus"></span></span>
+                                            <input id="photo" name="photo" type="file" class="upload" style="position: absolute; top: 60px; left: 16px; margin: 0; padding: 0px; cursor: pointer; opacity: 0;filter: alpha(opacity=0); box-sizing: content-box;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 ml-5 mt-4">
+                                    <div class="" id="fileUpldbtnContainer">
+                                        <div>
+                                            <img id="blah1" src="" alt="" class="img-thumbnail" style="height: 153px; width: 174px; z-index: 0; position: absolute; top: 2px;" />
+                                        </div>
+                                        <div class="fileUpload1" style="height: 152px; width: 176px;  font-size: 15px; color:rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0.1);">
+                                            <span class="uploadFile"><span class=" fa fa-plus"></span></span>
+                                            <input id="photo" name="photo1" type="file" class="upload1" style="position: absolute; top: 60px; left: 16px; margin: 0; padding: 0px; cursor: pointer; opacity: 0; filter: alpha(opacity=0); box-sizing: content-box;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="ml-3">
+                    <button type="submit" class="btn btn-primary" id="prodForm"><span class="fa fa-save fa-lg"></span>&nbsp; Save</button>
+                    <button type="reset" class="btn btn-default" id="prodForm"><span class="fa fa-times fa-lg"></span>&nbsp;Cancle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section myscript
+    {
+    <script type="text/javascript">
+
+        function showImage(imageUploader, previewImage) {
+            if (imageUploader.files && imageUploader.files[0]) {
+                var read = new FileReader();
+                read.onload = function (e) {
+                    $(previewImage).attr('src', e.target.result);
+                }
+                read.readAsDataURL(imageUploader.files[0]);
+            }
+        }
+
+        $(document).ready(function () {
+            $(document).on('click',
+                '.fileUpload',
+                function () {
+                    $(this).children('.upload').change(function (event) {
+                        readURL(this);
+                        fileName = $(this).val();
+
+                    });
+                });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+
+        $(document).ready(function () {
+            $(document).on('click',
+                '.fileUpload1',
+                function () {
+                    $(this).children('.upload1').change(function (event) {
+                        readURL(this);
+                        fileName = $(this).val();
+
+                    });
+                });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#blah1').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+
+    </script>
+}
