@@ -1,0 +1,20 @@
+﻿@model DrinkShopClasses.DrinkManagement.OrderDetail
+@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="col-lg-12">
+        <div class="jumbotron bounceInDown" style="margin-top: 18%">
+            <strong style="margin-left: 20%;font-size: 34px; font-family:Courier New;">Your Order Submit Successfully</strong>
+            <p class="lead text-center">
+                Thank You... ! For Shopping From Our Site.We Will Sent Your Product as Soon As Possible<br />
+                For More Information You Can Contact us by Clicking on This Button<br /><br />
+                <a href="" class="btn btn-success">Contact us...!</a>
+                <a href="@Url.Action("Index","Home")" class="btn btn-deep-orange">Do you want to buy More Drinks...?</a>
+                <a href="@Url.Action("ViewOrderDetails","Home")" class="btn btn-blue-grey">See Order Details<span class="fa fa-eye"></span></a>
+            </p>
+            <h4>@ViewBag.msg</h4>
+        </div>
+    </div>
+</div>
