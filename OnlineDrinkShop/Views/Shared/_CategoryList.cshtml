@@ -1,0 +1,16 @@
+﻿@using DrinkShopClasses.DrinkManagement
+@using OnlineDrinkShop.Models
+@{
+    List<SelectListItem> categories = ModelHelper.ToSelectItemList(new CategoryHandler().GetAllCategories());
+}
+
+@if (categories != null)
+{
+    <ul class="list-group">
+        @foreach (var c in categories)
+        {
+            <li class="list-group-item">@Html.ActionLink(c.Text, "ByCategory", "Home", new { id = Convert.ToInt32(c.Value) }, null)</li>
+        }
+    </ul>
+}
+
