@@ -1,0 +1,42 @@
+﻿
+@model DrinkShopClasses.DrinkManagement.Order
+@{
+    ViewBag.Title = "PlaceOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card" style="margin-top: 10%">
+    <div class="card-header lighten-1 white-text text-center deep-purple"> <h4 class="text-xl-center">Enter Your Latest Information</h4></div>
+    <div class="card-body">
+        <div class="card-text">
+            @using (Html.BeginForm("Order", "Product", FormMethod.Post, new { id = "place" }))
+            {
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="md-form">
+                        <i class="fa fa-user fa-lg prefix"></i>
+                        @Html.TextBoxFor(m => m.BuyerName, null, new { @class = "form-control", id = "buyer" })
+                        @Html.LabelFor(m => m.BuyerName, new { @for = "buyer" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-address-book fa-lg prefix"></i>
+                        @Html.TextBoxFor(m => m.FullAddress, null, new { @class = "form-control", id = "fulladd" })
+                        @Html.LabelFor(m => m.FullAddress, new { @for = "fulladd" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-envelope fa-lg prefix"></i>
+                        @Html.TextBoxFor(m => m.EmailAddress, null, new { @class = "form-control", id = "emailadd" })
+                        @Html.LabelFor(m => m.EmailAddress, new { @for = "emailadd" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-phone fa-lg prefix"></i>
+                        @Html.TextBoxFor(m => m.Phone, null, new { @class = "form-control", id = "phon" })
+                        @Html.LabelFor(m => m.Phone, new { @for = "phon" })
+                    </div>
+                    <button type="submit" class="btn btn-success float-right"><span class="fa fa-shopping-basket"></span>&nbsp;&nbsp;PlaceOrder</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
