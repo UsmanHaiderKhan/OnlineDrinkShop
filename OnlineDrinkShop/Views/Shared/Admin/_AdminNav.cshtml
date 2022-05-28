@@ -1,0 +1,55 @@
+﻿@using DrinkShopClasses.UserMangement
+@{
+    User user = (User)Session[WebUtils.CurrentUser];
+
+}
+<nav class="navbar navbar-expand-lg navbar-dark  deep-purple">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="@Url.Action("Index","Admin")"><i class="fa fa-beer fa-lg"></i>&nbsp;E-DrinkShop</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","Admin")">
+                    <span class="fa fa-home fa-lg"></span>&nbsp;  Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("AddProduct","Product")"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add New Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("ProductsinShop","Admin")"><i class="fab fa-product-hunt"></i>&nbsp;&nbsp;Total Products in Shop</a>
+            </li>
+            <li class="nav-item float-right">
+                <a class="nav-link" href="@Url.Action("Logout","Users")"><span class="fa fa-sign-out-alt"></span>&nbsp;&nbsp;Logout</a>
+            </li>
+            <li class="nav-item float-right">
+                <a class="nav-link" href="@Url.Action("Index","Home")"><i class="fab fa-tripadvisor fa-lg"></i>&nbsp;&nbsp;Visit Client Site</a>
+            </li>
+
+        </ul>
+        <nav class="navbar navbar-dark mdb-color-ic">
+            <h4 class="text-white">Admin:@user.FullName</h4>
+        </nav>
+        <!-- Links -->
+        @*<nav class="navbar navbar-dark mdb-color-ic">
+                <form class="form-inline my-2 my-lg-0 ml-auto">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+                </form>
+            </nav>*@
+    </div>
+    <!-- Collapsible content -->
+</nav>
+
