@@ -1,0 +1,59 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Font Awesome -->
+    <link href="~/Content/MDB Free/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="/Content/MDB Free/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/Content/MDB Free/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/Content/MDB Free/css/style.css" rel="stylesheet">
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/Admin/_AdminNav.cshtml")
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 mt-5">
+                <div class="list-group">
+                    <a href="#" class="list-group-item deep-purple text-white text-center">
+                        Online Drink Shop Menu
+                    </a>
+                    <a href="@Url.Action("Index","Admin")" class="list-group-item"><i class="fas fa-tachometer-alt"></i>&nbsp; Dash Board</a>
+                    <a class="list-group-item" href="@Url.Action("GetAllUsers", "Admin")"><span class="fa fa-users fa-lg"></span>&nbsp;&nbsp;Users <i class="badge deep-purple" style="padding: 3%;margin-left: 50% ">@Html.Action("GetUserCount", "Admin")</i></a>
+                    <a class="list-group-item" href="@Url.Action("Orderby", "Order")"><span class="fa fa-shopping-bag fa-lg"></span>&nbsp;&nbsp;Order By <i class="badge deep-purple" style="padding: 3%;margin-left: 45% ">@Html.Action("GetOrderByCount", "Order")</i></a>
+                    @*<a class="list-group-item" href="@Url.Action("ReciveOrders", "Order")"><span class="fa fa-check fa-lg"></span>&nbsp;&nbsp;Complete<i class="badge deep-purple" style="padding: 3%;margin-left: 42%">@Html.Action("GetOrdersCount", "Order")</i></a>*@
+                    <a class="list-group-item" href="@Url.Action("AddProduct","Product")"><span class="fa fa-plus fa-lg"></span>&nbsp;&nbsp;Create Product</a>
+                    <a class="list-group-item" href="@Url.Action("ProductsinShop","Admin")"><span class="fab fa-product-hunt fa-lg"></span>&nbsp;&nbsp;Total Products</a>
+                    <a class="list-group-item" href="@Url.Action("ProductsinShop","Admin")"><span class="fa fa-envelope fa-lg"></span>&nbsp;&nbsp;Messages</a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/Content/MDB Free/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/Content/MDB Free/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/Content/MDB Free/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/Content/MDB Free/js/mdb.min.js"></script>
+    @RenderSection("myscript", required: false)
+</body>
+</html>
