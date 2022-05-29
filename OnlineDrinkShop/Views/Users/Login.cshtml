@@ -1,0 +1,69 @@
+﻿@model OnlineDrinkShop.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<link href="~/Content/MDB Free/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
+<!-- Bootstrap core CSS -->
+<link href="/Content/MDB Free/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="/Content/MDB Free/css/mdb.min.css" rel="stylesheet">
+<!-- Start The Main Body Of Login Page -->
+
+<div style="margin-top: 8%;margin-left: 25%">
+    <div class="card w-75">
+        <div class="card-header lighten-1 white-text text-center deep-purple">
+            Login To Buy The Drink
+            @if (ViewBag.Error != null)
+            {
+                <h3> @ViewBag.Error</h3>
+            }
+        </div>
+        <div class="card-body">
+            <div class="card-text">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("Login", "Users", new { c = ViewBag.Controller, a = ViewBag.Action }, FormMethod.Post, new { id = "loginform", enctype = "plain/text" }))
+                    {
+                        <div class="md-form">
+                            <i class="fa fa-user fa-lg prefix"></i>
+
+                            @Html.TextBoxFor(m => m.UserName, null, new { @class = "form-control", id = "username" })
+                            @Html.LabelFor(m => m.UserName, null, new { @for = "username", @class = "col-md-5" })<br />
+                            @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "text-danger text-center" })
+                        </div>
+                        <div class="md-form">
+                            <i class="fa fa-lock fa-lg prefix"></i>
+                            @Html.TextBoxFor(m => m.Password, null, new { @class = "form-control", id = "password", type = "password" })
+                            @Html.LabelFor(m => m.Password, null, new { @for = "password", @class = "col-md-5" })<br />
+                            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="ml-4">
+                            @Html.CheckBoxFor(m => m.Rememberme)<span class="ml-1">@Html.LabelFor(m => m.Rememberme)</span>
+                        </div>
+                        <div class="form-group right">
+                            <div class="col-md-10">
+                                <button type="submit" class="btn btn-primary btn-block ml-5">  <span class="fa fa-sign-in-alt"> </span> &nbsp;&nbsp;Login</button>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="@Url.Action("SignUp","Users")" style="margin-left: 40%">Create New Account...!</a>
+                        </div>
+                        <div>
+                            <a href="@Url.Action("PasswordRecovery","Users")" style="margin-left: 39%">Recover Your Password...!</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="/Content/MDB Free/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/Content/MDB Free/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/Content/MDB Free/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/Content/MDB Free/js/mdb.min.js"></script>
