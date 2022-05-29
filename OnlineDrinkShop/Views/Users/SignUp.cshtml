@@ -1,0 +1,145 @@
+﻿@model DrinkShopClasses.UserMangement.User
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = null;
+}
+<link href="~/Content/MDB Free/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
+<!-- Bootstrap core CSS -->
+<link href="/Content/MDB Free/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="/Content/MDB Free/css/mdb.min.css" rel="stylesheet">
+<!-- Start The Main Body Of Login Page -->
+
+<div class="card w-75 mt-2 offset-2 mb-5">
+    <div class="card-header lighten-1 white-text text-center deep-purple"><h4>Register Your Self To Get the Drink</h4></div>
+    <div class="card-body">
+        <div class="card-text">
+            @using (Html.BeginForm("SignUp", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-check">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="md-form mt-2 offset-4">
+                        <div class="" id="fileUpldbtnContainer">
+                            <div>
+                                <img id="blah1" src="" alt="" class="img-thumbnail" style="height: 153px; width: 174px; z-index: 0; position: absolute; top: 2px;border-radius:50%" />
+                            </div>
+                            <div class="fileUpload1" style="height: 152px; width: 176px;  font-size: 15px; color: rgba(0, 0, 0, 0.1); border: 2px solid rgba(0, 0, 0, 0.1);border-radius:50%">
+                                <span class="uploadFile"></span>
+                                <input id="photo" name="photo" type="file" class="upload1" style="position: absolute;left: 16px; top: 60px; margin: 0px; padding: 0px;cursor: pointer; opacity: 0;filter: alpha(opacity=0); box-sizing: content-box;border-radius:50% " />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.UserName, "", new { @class = "form-control", id = "username" })
+                        @Html.LabelFor(model => model.UserName, new { @for = "username" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.UserName, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.Password, new { id = "password", @class = "form-control", type = "password" })
+                        @Html.LabelFor(model => model.Password, new { @for = "password" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-lock fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", id = "con", type = "password" })
+                        @Html.LabelFor(model => model.ConfirmPassword, new { @for = "con" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-envelope fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "email" })
+                        @Html.LabelFor(model => model.Email, new { @for = "email" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-phone fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.PhoneNo, new { @class = "form-control", id = "phone" })
+                        @Html.LabelFor(model => model.PhoneNo, new { @for = "phone" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.PhoneNo, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-flag fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.State, new { @class = "form-control", id = "state" })
+                        @Html.LabelFor(model => model.State, new { @for = "state" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.State, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-flag fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", id = "city" })
+                        @Html.LabelFor(model => model.City, new { @for = "city" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.City, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-address-card fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.FullAddress, new { @class = "form-control", id = "fulladd" })
+                        @Html.LabelFor(model => model.FullAddress, new { @for = "fulladd" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.FullAddress, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="md-form">
+                        <i class="fa fa-user fa-lg prefix"></i>
+                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", id = "fullname" })
+                        @Html.LabelFor(model => model.FullName, new { @for = "fullname" })
+                        <br />
+                        @Html.ValidationMessageFor(model => model.FullName, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="md-form">
+                        <div class="col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="/Content/MDB Free/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/Content/MDB Free/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/Content/MDB Free/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/Content/MDB Free/js/mdb.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('click',
+            '.fileUpload1',
+            function () {
+                $(this).children('.upload1').change(function (event) {
+                    readURL(this);
+                    fileName = $(this).val();
+
+                });
+            });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah1').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    });
+</script>
+
+
