@@ -1,0 +1,128 @@
+﻿@using DrinkShopClasses.DrinkManagement
+@using DrinkShopClasses.UserMangement
+@using OnlineDrinkShop.Models
+
+@{
+    /**/
+
+    User currentuser = (User)Session[WebUtils.CurrentUser];
+    List<SelectListItem> categories = ModelHelper.ToSelectItemList(new CategoryHandler().GetAllCategories());
+
+}
+<nav class="navbar navbar-expand-lg navbar-dark  deep-purple fixed-top">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="@Url.Action("Index","Home")"><i class="fa fa-beer fa-lg"></i>&nbsp;E-DrinkShop</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","Home")">
+                    <span class="fa fa-home"></span>&nbsp;  Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Contact")"><span class="fa fa-phone"></span>&nbsp;Contact Us</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-tags"></span>&nbsp;&nbsp;Categories<span></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var v in categories)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("ByCategory","Home",new{ id = Convert.ToInt32(v.Value)})"><span class="fa fa-tag"></span> @v.Text</a></li>
+                    }
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("ViewCart","Cart")"> Cart <span id="cartitems" class="badge">0</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user" style="color: whitesmoke"></span>&nbsp;User Info<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("index","Users",new {id=currentuser.Id})"> <span class="fa fa-user"></span>&nbsp; @currentuser.FullName</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("ChangePassword","Users",new{id=currentuser.Id})"><span class="fa fa-lock"></span>&nbsp; Reset Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("ProfileSetting","Users",new{id=currentuser.Id})"><span class="fa fa-cog"></span>&nbsp; Profile Setting</a></li>
+
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item"><a href="@Url.Action("Logout","Users")"><span class="fa fa-sign-out-alt"></span>&nbsp; Logout</a></li>
+                </ul>
+            </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li>
+                <img src="/Content/UserImages/@Url.Content(currentuser.ImageUrl)" style="width: 50px; height: 50px; border-radius: 50%;" class="img-thumbnail" />
+            </li>
+
+        </ul>
+        <!-- Links -->
+        <nav class="navbar navbar-dark mdb-color-ic">
+            <h4 class="text-white">WellCome:@currentuser.FullName</h4>
+        </nav>
+        @*<form class="form-inline my-2 my-lg-0 ml-auto" action="/Home/Search/" method="get">
+                <input class="form-control" type="search" name="searchString" placeholder="Search for a drink" aria-label="Search" value="@ViewData["searchString"]">
+                <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Search</button>
+            </form>*@
+    </div>
+    <!-- Collapsible content -->
+</nav>
+@section myscript
+{
+    <script type="text/javascript">
+        $(function () {
+            //here we can print the report of the
+            //product that is buyed by the client
+
+            $.ajax(
+                {
+                    url: "/Cart/ItemsCount",
+                    type: "get"
+                }
+            ).done(function (itemscount) {
+                $("#cartitems").text(itemscount);
+            });
+            $(".cartqtytxt").change(function () {
+                var elt = $(this);
+                var qty = elt.val();
+                if (qty != 0) {
+                    var qs = "?id=" + $(this).data("pid") + "&qty=" + qty;
+                    $.ajax(
+                        {
+                            url: "/Cart/Update" + qs,
+                            type: "get",
+                        }
+                    ).done(function (itemscount) {
+                        $("#cartitems").text(itemscount);
+                    });
+                }
+            });
+            $(".addcartbtn").click(function () {
+                var obj = {
+                    "Id": $(this).data("pid"),
+                    "Name": $(this).data("pname"),
+                    "Price": $(this).data("pprice"),
+                    "ImageUrl": $(this).data("purl"),
+                    "Quantity": $(this).data("pqty")
+                }
+                $(this).parents("#proditem").fadeOut(300);
+                $.ajax(
+                    {
+                        url: "/Cart/Add",
+                        type: "get",
+                        data: obj
+                    }
+                ).done(function (itemscount) {
+                    $("#cartitems").text(itemscount);
+                });
+                $(this).parents("#proditem").fadeIn(300);
+            });
+        })
+    </script>
+}
