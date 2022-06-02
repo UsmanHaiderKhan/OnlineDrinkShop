@@ -1,0 +1,36 @@
+﻿
+
+@model IEnumerable<OnlineDrinkShop.Models.ProductSummeryModel>
+<div style="margin-top: 5%">
+    @if (Model != null)
+    {
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div id="proditem" class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="img-thumbnail prodsmyitem">
+                        @if (p.ImageUrl != null)
+                        {
+                            <img src="@Url.Content(p.ImageUrl)" alt="@p.Name" style="width: 340px;height: 200px" />
+                        }
+                        else
+                        {
+                            <h3>No Image</h3>
+                        } <h3 class="float-right">@p.Price.ToString("c")</h3>
+                        <h3>
+                            @p.Name
+                        </h3>
+                        <p>@p.ShortDescription </p>
+                        <p class="cartbtnwpr">
+                            <button type="button" style="border-radius: 30px;float: left" class="btn btn-primary btn-md addcartbtn" data-pid="@p.Id" data-pname="@p.Name" data-pprice="@p.Price" data-purl="@p.ImageUrl" data-pqty="1">
+                                Add To Cart &nbsp;<span class="fa fa-shopping-cart"></span>
+                            </button>
+                        </p>
+                        <a href="@Url.Action("ProductDetails","Home", new { Id = p.Id})" style="border-radius: 30px" class="btn btn-success btn-md">View Details &nbsp;<span class="fa fa-eye"></span></a>
+                    </div>
+                </div>
+            }
+        </div>
+
+    }
+</div>
